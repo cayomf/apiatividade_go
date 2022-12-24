@@ -1,0 +1,317 @@
+definitions:
+  models.Aluno:
+    properties:
+      id:
+        type: integer
+      nome:
+        type: string
+    type: object
+  models.Atividade:
+    properties:
+      data_entrega:
+        type: string
+      descricao:
+        type: string
+      id:
+        type: integer
+      professor_id:
+        type: integer
+      titulo:
+        type: string
+    type: object
+  models.Entrega:
+    properties:
+      aluno_id:
+        type: integer
+      atividade_id:
+        type: integer
+      disciplina:
+        type: string
+      id:
+        type: integer
+      nota:
+        type: string
+    type: object
+  models.EntregaRequest:
+    properties:
+      id:
+        type: integer
+      nota:
+        type: string
+    type: object
+  models.Professor:
+    properties:
+      id:
+        type: integer
+      nome:
+        type: string
+    type: object
+host: localhost:8083
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is an example API.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Gerenciador de Atividades API
+  version: "1.0"
+paths:
+  /addAluno:
+    post:
+      description: Adiciona um aluno
+      parameters:
+      - description: Aluno
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/models.Aluno'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Aluno'
+            type: array
+      summary: Adiciona um aluno
+      tags:
+      - addAluno
+  /addAtividade:
+    post:
+      description: Adiciona uma atividade
+      parameters:
+      - description: Atividade
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/models.Atividade'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Atividade'
+            type: array
+      summary: Adiciona uma atividade
+      tags:
+      - addAtividade
+  /addEntrega:
+    post:
+      description: Adiciona uma entrega
+      parameters:
+      - description: Entrega
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/models.Entrega'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Entrega'
+            type: array
+      summary: Adiciona uma entrega
+      tags:
+      - addEntrega
+  /addProfessor:
+    post:
+      description: Adiciona um professor
+      parameters:
+      - description: Professor
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/models.Professor'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Professor'
+            type: array
+      summary: Adiciona um professor
+      tags:
+      - addProfessor
+  /aluno/{id}:
+    get:
+      description: Pega um aluno
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Aluno'
+            type: array
+      summary: Pega um aluno
+      tags:
+      - getAluno
+  /alunos:
+    get:
+      description: Pega todos os alunos
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Aluno'
+            type: array
+      summary: Pega todos os alunos
+      tags:
+      - getAlunos
+  /atividade/{id}:
+    get:
+      description: Pega uma atividade
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Atividade'
+            type: array
+      summary: Pega uma atividade
+      tags:
+      - getAtividade
+  /atividades:
+    get:
+      description: Pega tados as atividades
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Atividade'
+            type: array
+      summary: Pega tados as atividades
+      tags:
+      - getAtividades
+  /entrega/{id}:
+    get:
+      description: Pega uma entrega
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Entrega'
+            type: array
+      summary: Pega uma entrega
+      tags:
+      - getEntrega
+  /entregas:
+    get:
+      description: Pega todas as entregas
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Entrega'
+            type: array
+      summary: Pega todas as entregas
+      tags:
+      - getEntregas
+  /professor/{id}:
+    get:
+      description: Pega um professor
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Professor'
+            type: array
+      summary: Pega um professor
+      tags:
+      - getProfessor
+  /professores:
+    get:
+      description: Pega todos os professores
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Professor'
+            type: array
+      summary: Pega todos os professores
+      tags:
+      - getProfessores
+  /updateEntrega:
+    put:
+      description: Atualiza a nota na entrega do aluno
+      parameters:
+      - description: EntregaRequest
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/models.EntregaRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.EntregaRequest'
+            type: array
+      summary: Atualiza a nota na entrega do aluno
+      tags:
+      - updateEntrega
+swagger: "2.0"
